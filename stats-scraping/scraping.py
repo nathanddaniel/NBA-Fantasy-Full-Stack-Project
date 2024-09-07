@@ -42,4 +42,4 @@ for nbaTeamUrl in nbaTeamUrls:
     # getting the table that contains the entire roster for each team
     teamRoster = soup.find_all('table', class_='stats_table')[0]
     print(teamRoster)
-    print("added all teams")
+    print("added all NBA teams")
