@@ -46,11 +46,14 @@ public class Player {
     private Float pointsPerGame;
     private String team;
 
+    private String nation;
+    private String college;
+
     public Player() {
 
     }
 
-    public Player(String player, Integer age, Integer games, Integer gamesStarted, Float minutePerGame, Float fieldGoal, Float fieldGoalAttempted, Double fieldGoalPercentage, Float threePoint, Float threePointAttempted, Double threePointPercentage, Float twoPoint, Float twoPointAttempted, Double twoPointPercentage, Double efficientFieldGoalPercentage, Float freeThrows, Float freeThrowsAttempted, Double freeThrowsPercentage, Float offensiveRebounds, Float defensiveRebounds, Float totalRebounds, Float assists, Float steals, Float blocks, Float turnovers, Float personalFouls, Float pointsPerGame, String team) {
+    public Player(String player, Integer age, Integer games, Integer gamesStarted, Float minutePerGame, Float fieldGoal, Float fieldGoalAttempted, Double fieldGoalPercentage, Float threePoint, Float threePointAttempted, Double threePointPercentage, Float twoPoint, Float twoPointAttempted, Double twoPointPercentage, Double efficientFieldGoalPercentage, Float freeThrows, Float freeThrowsAttempted, Double freeThrowsPercentage, Float offensiveRebounds, Float defensiveRebounds, Float totalRebounds, Float assists, Float steals, Float blocks, Float turnovers, Float personalFouls, Float pointsPerGame, String team, String nation, String college) {
         this.player = player;
         this.age = age;
         this.games = games;
@@ -79,6 +82,8 @@ public class Player {
         this.personalFouls = personalFouls;
         this.pointsPerGame = pointsPerGame;
         this.team = team;
+        this.nation = nation;
+        this.college = college;
     }
 
     public Player(String player) {
@@ -306,5 +311,21 @@ public class Player {
 
     public void setTeam(String team) {
         this.team = team;
+    }
+
+    public String getNation() {
+        return nation;
+    }
+
+    public void setNation(String nation) {
+        this.nation = nation;
+    }
+
+    public String getCollege() {
+        return college;
+    }
+
+    public void setCollege(String college) {
+        this.college = college;
     }
 }
