@@ -21,6 +21,7 @@ public class PlayerController {
             @RequestParam(required = false) String team,
             @RequestParam(required = false) String player,
             @RequestParam(required = false) String college,
+            @RequestParam(required = false) String position,
             @RequestParam(required = false) String nation) {
 
         if (team != null && college != null) {
@@ -34,6 +35,9 @@ public class PlayerController {
         }
         else if (college != null) {
             return playerService.getPlayersByCollege(college);
+        }
+        else if (position != null) {
+            return playerService.getPlayersByPosition(position);
         }
         else if (nation != null) {
             return playerService.getPlayersByNation(nation);
