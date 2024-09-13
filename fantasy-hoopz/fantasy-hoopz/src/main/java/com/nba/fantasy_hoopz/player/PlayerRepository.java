@@ -8,9 +8,6 @@ import java.util.Optional;
 @Repository
 public interface PlayerRepository extends JpaRepository<Player, String> {
 
-    void deleteByName(String playerName);
-    Optional<Player> findByName(String name);
-
-
-
+    void deleteByPlayer(String playerName);
+    Optional<Player> findByPlayer(String player);
 }

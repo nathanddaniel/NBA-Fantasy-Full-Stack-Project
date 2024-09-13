@@ -51,31 +51,4 @@ public class PlayerService {
                 .filter(player -> teamName.equals(player.getTeam()) && searchCollege.equals(player.getCollege()))
                 .collect(Collectors.toList());
     }
-
-    public Player addNewPlayer(Player player) {
-        playerRepository.save(player);
-        return player;
-    }
-
-    public Player updateAPlayer(Player updatedPlayer) {
-        Optional<Player> existingPlayer = playerRepository.findByName(updatedPlayer.getPlayer());
-
-        if (existingPlayer.isPresent()) {
-            Player playerToUpdate = existingPlayer.get();
-            playerToUpdate.setPlayer(updatedPlayer.getPlayer());
-            playerToUpdate.setNation(updatedPlayer.getNation());
-            playerToUpdate.setCollege(updatedPlayer.getCollege());
-            playerToUpdate.setTeam(updatedPlayer.getTeam());
-
-            playerRepository.save(playerToUpdate);
-            return playerToUpdate;
-        }
-
-        return null;
-    }
-
-    @Transactional
-    public void deletePlayer(String playerName){
-        playerRepository.deleteByName(playerName);
-    }
 }
