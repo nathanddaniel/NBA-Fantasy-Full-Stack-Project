@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F4F4F4;
+    color: #333;
+    text-align: center;
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.nba-logo {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.site-title {
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+.nav-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+}
+
+.people { background-image: url('people-icon.png'); }
+.graduation-cap { background-image: url('graduation-cap-icon.png'); }
+.home { background-image: url('home-icon.png'); }
+.flag { background-image: url('flag-icon.png'); }
+.jersey { background-image: url('jersey-icon.png'); }
+.search { background-image: url('search-icon.png'); }
+
+/* Main Section */
+.welcome-section {
+    background-color: #D3D3D3;
+    padding: 100px 0;
+}
+
+.welcome-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.welcome-section p {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    background-color: #FF0000;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cta-button:hover {
+    background-color: #D00000;
+}
+
+/* NBA Side Logo */
+.nba-side-logo {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0.2;
+}
+
+.nba-side-logo img {
+    height: 100px;
+}
