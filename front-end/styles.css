@@ -1,13 +1,18 @@
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Ensure the body and html take full height */
+html, body {
+    height: 100%;
+}
+
 /* Body Styling */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #F4F4F4;
     color: #333;
     text-align: center;
 }
@@ -37,28 +42,26 @@ header {
     color: #fff;
 }
 
+/* Navigation Icons */
 .nav-icons {
     display: flex;
     gap: 20px;
 }
 
-.icon {
+.nav-icon {
     width: 24px;
     height: 24px;
-    background-size: cover;
+    cursor: pointer;
 }
-
-.people { background-image: url('people-icon.png'); }
-.graduation-cap { background-image: url('graduation-cap-icon.png'); }
-.home { background-image: url('home-icon.png'); }
-.flag { background-image: url('flag-icon.png'); }
-.jersey { background-image: url('jersey-icon.png'); }
-.search { background-image: url('search-icon.png'); }
 
 /* Main Section */
 .welcome-section {
     background-color: #D3D3D3;
-    padding: 100px 0;
+    min-height: 100vh; /* Ensure section takes up full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .welcome-section h2 {
