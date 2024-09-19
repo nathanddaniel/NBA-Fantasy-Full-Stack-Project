@@ -292,3 +292,56 @@ header {
     height: auto; /* Maintain aspect ratio */
     margin-bottom: 10px; /* Adds space between the logo and the text */
 }
+
+/* Styling for the main section */
+.countries-section {
+    padding: 20px; /* Adds space around the section */
+    text-align: center;
+}
+
+/* Title styling */
+.countries-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px; /* Adds space between title and content */
+    color: #333;
+}
+
+/* Flexbox container for country logos */
+.country-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centers the logos */
+    gap: 20px; /* Adds space between the flag buttons */
+}
+
+/* Styling each country item */
+.country-logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Styling for country flags */
+.country-flag {
+    border: 1px solid #ddd; /* Light gray border around flags */
+    background-color: #f8f8f8; /* Subtle background to highlight flags */
+    padding: 10px; /* Space around the flag */
+    border-radius: 5px; /* Rounded corners for a softer look */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a soft shadow */
+    max-width: 100px; /* Set a consistent width for all flags */
+    max-height: 70px; /* Maintain aspect ratio with a max height */
+    object-fit: contain; /* Ensures the image fits within the container without distortion */
+    transition: transform 0.2s; /* Adds a subtle hover effect */
+}
+
+/* Add hover effect for better interaction */
+.country-flag:hover {
+    transform: scale(1.05); /* Slightly enlarges the flag on hover */
+}
+
+/* Text styling under each flag */
+.country-logo-item p {
+    margin-top: 8px;
+    font-size: 1rem;
+    color: #333;
+}
