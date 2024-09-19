@@ -256,3 +256,39 @@ header {
 .team-logo:hover {
     transform: scale(1.1); /* Slight hover effect */
 }
+
+/* Teams Page Styling */
+.teams-section {
+    padding-top: 20px;
+    margin-top: 40px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0; /* Adjust padding for spacing */
+}
+
+.teams-section h2 {
+    margin-bottom: 20px; /* Adjust this value to increase or decrease spacing */
+    font-size: 2rem; /* Optional: Adjust the size of the heading if needed */
+    font-weight: bold; /* Optional: Make the heading bold */
+}
+
+.nba-conference-buttons {
+    display: flex;
+    justify-content: center; /* Centers the buttons horizontally */
+    align-items: center; /* Centers the content vertically */
+    gap: 50px; /* Space between the two conference buttons */
+}
+
+.nba-conference-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the text and logo vertically */
+}
+
+.nba-conference-logo {
+    width: 150px; /* Set a consistent size for both logos */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Adds space between the logo and the text */
+}
