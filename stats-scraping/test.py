@@ -4,37 +4,45 @@ import requests
 import time
 
 # Requesting the HTML page
-html = requests.get("https://www.pro-football-reference.com/years/2023/index.htm").text
+html = requests.get("https://www.basketball-reference.com/leagues/NBA_2023_standings.html").text
 soup = BeautifulSoup(html, "lxml")
 
-# Extracting the AFC and NFC tables
-afc_table = soup.find_all('table', class_='stats_table')[0]
-nfc_table = soup.find_all('table', class_='stats_table')[1]
+# Extracting the Western Conference and Eastern Conferences tables
+east_table = soup.find_all('table', class_='stats_table')[0]
+west_table = soup.find_all('table', class_='stats_table')[1]
 
-# Reading the HTML content directly into DataFrames
-afc_data = pd.read_html(str(afc_table))[0]
-nfc_data = pd.read_html(str(nfc_table))[0]
+# # Reading the HTML content directly into DataFrames
+# east_data = pd.read_html(str(east_table))[0]
+# west_data = pd.read_html(str(west_table))[0]
 
-# Define column names (based on the table structure for both tables)
-columns = ['Tm', 'W', 'L', 'W-L%', 'PF', 'PA', 'PD', 'MoV', 'SoS', 'SRS', 'OSRS', 'DSRS']
+# Within each conference standings table on the website, there's a link for each team's stats
+# We want to get each team's link
+eLinks = east_table.find_all('a')
+wLinks = west_table.find_all('a')
 
-# Rename columns for both AFC and NFC tables
-afc_data.columns = columns
-nfc_data.columns = columns
+# We filter all the links within the table to get all the links that have "/teams" in them
+# Each link that has that is a link to an NBA team's stats website
+eLinks = [l.get("href") for l in eLinks if "/teams" in l.get("href", "")]
+wLinks = [l.get("href") for l in wLinks if "/teams" in l.get("href", "")]
 
-# Clean the AFC DataFrame: remove rows with "AFC" in 'Tm' and NaN rows
-afc_data = afc_data.dropna(subset=['Tm'])  # Drop rows where 'Tm' is NaN
-afc_data = afc_data[~afc_data['Tm'].str.contains("AFC", na=False)]  # Remove rows with "AFC" in 'Tm'
+# Prepend the base URL to each of the filtered links from the table
+eTeamUrls = [f"https://www.basketball-reference.com{l}" for l in eLinks]
+wTeamUrls = [f"https://www.basketball-reference.com{l}" for l in wLinks]
 
-# Clean the NFC DataFrame: remove rows with "NFC" in 'Tm' and NaN rows
-nfc_data = nfc_data.dropna(subset=['Tm'])  # Drop rows where 'Tm' is NaN
-nfc_data = nfc_data[~nfc_data['Tm'].str.contains("NFC", na=False)]  # Remove rows with "NFC" in 'Tm'
+# combining the list of all the teams urls in the east and west to create an overall list combining both
+nbaTeamUrls = eTeamUrls + wTeamUrls
 
-# Combine the AFC and NFC DataFrames
-overall_standings = pd.concat([afc_data, nfc_data], ignore_index=True)
+print(nbaTeamUrls)
 
-# Print the combined DataFrame (Overall Standings)
-print("Overall Standings (AFC + NFC):")
-print(overall_standings)
+# Function to scrape roster data for a given NBA team URL using the table ID
+for nbaTeamUrl in nbaTeamUrls:
+    # retrieving the abbreviation of each NBA team from each team url
+    nbaAbr = nbaTeamUrl.split("/")[-2]
+    # Retrieving the HTML content from each NBA team url
+    teamData = requests.get(nbaTeamUrl).text
+    # Using Beautiful Soup to parse through the content
+    soup = BeautifulSoup(teamData, "lxml")
+    # getting the table that contains the entire roster for each team
+    teamRoster = soup.find_all('table', class_='stats_table')[0]
 
 

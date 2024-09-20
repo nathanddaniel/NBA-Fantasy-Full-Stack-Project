@@ -29,6 +29,7 @@ wLinks = [l.get("href") for l in wLinks if "/teams" in l.get("href", "")]
 eTeamUrls = [f"https://www.basketball-reference.com{l}" for l in eLinks]
 wTeamUrls = [f"https://www.basketball-reference.com{l}" for l in wLinks]
 
+# combining the list of all the teams urls in the east and west to create an overall list combining both
 nbaTeamUrls = eTeamUrls + wTeamUrls
 
 # Function to scrape roster data for a given NBA team URL using the table ID
@@ -41,5 +42,5 @@ for nbaTeamUrl in nbaTeamUrls:
     soup = BeautifulSoup(teamData, "lxml")
     # getting the table that contains the entire roster for each team
     teamRoster = soup.find_all('table', class_='stats_table')[0]
-    print(teamRoster)
-    print("added all NBA teams")
+
+
