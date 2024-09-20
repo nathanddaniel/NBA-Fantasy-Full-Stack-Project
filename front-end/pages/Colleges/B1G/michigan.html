@@ -74,7 +74,7 @@
 
     <script>
         // Fetch player data for Michigan Wolverines
-        fetch('/players/college/Michigan') // Adjust this endpoint based on your backend setup
+        fetch('http://localhost:8080/api/version1/player/college/Michigan') // Adjust this endpoint based on your backend setup
             .then(response => response.json())
             .then(data => {
                 const tableBody = document.querySelector('#player-table tbody');
