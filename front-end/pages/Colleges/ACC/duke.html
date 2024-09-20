@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boston College Eagles - Fantasy Hoopz</title>
+    <title>Duke Blue Devils - Fantasy Hoopz</title>
     <link rel="stylesheet" href="../../../css/styles.css">
 </head>
 <body>
@@ -24,7 +24,7 @@
     </header>
 
     <main>
-        <h2>Boston College Eagles - NBA Players</h2>
+        <h2>Duke Blue Devils - NBA Players</h2>
         <table id="player-table">
             <thead>
                 <tr>
@@ -73,7 +73,7 @@
     </footer>
 
     <script>
-        fetch('http://localhost:8080/api/version1/player/college/BostonCollege') 
+        fetch('http://localhost:8080/api/version1/player/college/Duke') 
             .then(response => response.json())
             .then(data => {
                 const tableBody = document.querySelector('#player-table tbody');
