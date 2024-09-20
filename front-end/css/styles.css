@@ -1,0 +1,377 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    text-align: center;
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
+    position: relative;
+    z-index: 1;
+    width: 100%; /* Ensure the header stretches across the screen */
+    box-sizing: border-box;
+}
+
+/* Parallelogram Styling */
+.logo-parallelogram {
+    background-color: #FF0000;
+    padding: 10px 30px;
+    transform: skew(-20deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    max-width: 100%; /* Prevent any overflow */
+}
+
+.logo-parallelogram img,
+.logo-parallelogram h1 {
+    transform: skew(20deg); /* Counteract skew so content remains straight */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.nba-logo {
+    height: 50px;
+    margin-right: 10px;
+}
+
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('C:\Me\Programming Projects\NBA Fantasy Website\art_assets\Fonts\nba-lakers.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply the custom font to the "FantasyHoopz" title */
+.site-title {
+    font-family: 'MyCustomFont', sans-serif;
+    font-size: 2.5 rem;
+    color: #fff;
+} */
+
+
+/* Nav Icons */
+.nav-icons {
+    display: flex;
+    gap: 20px;
+    z-index: 3; /* Ensure the nav icons are above everything else */
+    position: relative;
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .nav-icons {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-icons.active {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 50px;
+        right: 20px;
+        background-color: #333;
+        padding: 10px;
+        border-radius: 5px;
+    }
+}
+
+/* Main Section */
+.welcome-section {
+    background: linear-gradient(-90deg, #FFFFFF 0%, #6c93ff 100%);
+    min-height: 100vh; /* Ensure section takes up full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Align to the left */
+    padding-left: 50px; /* Adjust padding to move the text from the left edge */
+    width: 100vw; /* Prevent overflow beyond the viewport */
+    box-sizing: border-box; /* Make sure padding doesn't cause overflow */
+}
+
+
+.welcome-section h2 {
+    font-size: 4rem; /* Increase font size */
+    font-weight: 900; /* Make text bold */
+    color: white;
+    text-align: left; /* Align text to the left */
+    margin-bottom: 10px; /* Adjust margin for spacing */
+}
+
+.welcome-section p {
+    font-size: 1.5rem; /* Adjust font size */
+    font-weight: 500; /* Make the paragraph semi-bold */
+    color: white;
+    text-align: left; /* Align text to the left */
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    background-color: #FF0000;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    background-color: #D00000;
+}
+
+/* NBA Side Logo */
+.nba-side-logo {
+    position: absolute;
+    bottom: 50px;
+    right: 20px; 
+    opacity: 0.05;
+}
+
+.nba-side-logo img {
+    height: 900px;
+    width: auto; /* Maintain auto so aspect ratio doesn't change */
+}
+
+/* College Buttons */
+.college-buttons {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.college-buttons h2 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Conference Logos Grid */
+.conference-logos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Create 3 equal-width columns */
+    gap: 40px; /* Space between items */
+    justify-items: center;
+    align-items: center;
+    margin-top: 20px;
+    max-width: 1200px; /* Constrain the width of the grid */
+    margin-left: auto;
+    margin-right: auto; /* Center the grid horizontally */
+}
+
+/* Conference Logo Item */
+.conference-logo-item {
+    text-align: center;
+    width: 200px; /* Ensure each item takes up equal width */
+}
+
+/* Make all conference logos the same size */
+.conference-logo {
+    width: 150px; /* Set consistent width */
+    height: auto; /* Keep aspect ratio */
+    transition: transform 0.3s ease;
+}
+
+.conference-logo:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Text below the logos */
+.conference-logo-item p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Team Logos Grid */
+.team-logos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 40px; /* Adjust space between logos */
+    justify-items: center;
+    align-items: center;
+    margin-top: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Make all team logos the same size */
+.team-logo {
+    width: 150px; /* Adjust size */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.team-logo:hover {
+    transform: scale(1.1); /* Slight hover effect */
+}
+
+/* Teams Page Styling */
+.teams-section {
+    padding-top: 20px;
+    margin-top: 40px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0; /* Adjust padding for spacing */
+}
+
+.teams-section h2 {
+    margin-bottom: 20px; /* Adjust this value to increase or decrease spacing */
+    font-size: 2rem; /* Optional: Adjust the size of the heading if needed */
+    font-weight: bold; /* Optional: Make the heading bold */
+}
+
+.nba-conference-buttons {
+    display: flex;
+    justify-content: center; /* Centers the buttons horizontally */
+    align-items: center; /* Centers the content vertically */
+    gap: 50px; /* Space between the two conference buttons */
+}
+
+.nba-conference-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the text and logo vertically */
+}
+
+.nba-conference-logo {
+    width: 150px; /* Set a consistent size for both logos */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Adds space between the logo and the text */
+}
+
+/* Styling for the main section */
+.countries-section {
+    padding: 20px; /* Adds space around the section */
+    text-align: center;
+}
+
+/* Title styling */
+.countries-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px; /* Adds space between title and content */
+    color: #333;
+}
+
+/* Flexbox container for country logos */
+.country-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centers the logos */
+    gap: 20px; /* Adds space between the flag buttons */
+}
+
+/* Styling each country item */
+.country-logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Styling for country flags */
+.country-flag {
+    border: 1px solid #ddd; /* Light gray border around flags */
+    background-color: #f8f8f8; /* Subtle background to highlight flags */
+    padding: 10px; /* Space around the flag */
+    border-radius: 5px; /* Rounded corners for a softer look */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a soft shadow */
+    max-width: 100px; /* Set a consistent width for all flags */
+    max-height: 70px; /* Maintain aspect ratio with a max height */
+    object-fit: contain; /* Ensures the image fits within the container without distortion */
+    transition: transform 0.2s; /* Adds a subtle hover effect */
+}
+
+/* Add hover effect for better interaction */
+.country-flag:hover {
+    transform: scale(1.05); /* Slightly enlarges the flag on hover */
+}
+
+/* Text styling under each flag */
+.country-logo-item p {
+    margin-top: 8px;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+td {
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
