@@ -1,6 +1,8 @@
 package com.nba.fantasy_hoopz.player;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,36 +22,11 @@ public class PlayerController {
     public List<Player> getPlayersByCollege(@PathVariable String college) {
         return playerService.getPlayersByCollege(college);
     }
-}
 
-//    @GetMapping
-//    public List<Player> getPlayers(
-//            @RequestParam(required = false) String team,
-//            @RequestParam(required = false) String player,
-//            @RequestParam(required = false) String college,
-//            @RequestParam(required = false) String position,
-//            @RequestParam(required = false) String nation) {
-//
-//        if (team != null && college != null) {
-//            return playerService.getPlayerByTeamNameAndCollege(team, college);
-//        }
-//        else if (team != null) {
-//            return playerService.getPlayersFromTeam(team);
-//        }
-//        else if (player != null) {
-//            return playerService.getPlayersByName(player);
-//        }
-//        else if (college != null) {
-//            return playerService.getPlayersByCollege(college);
-//        }
-//        else if (position != null) {
-//            return playerService.getPlayersByPosition(position);
-//        }
-//        else if (nation != null) {
-//            return playerService.getPlayersByNation(nation);
-//        }
-//        else {
-//            return playerService.getPlayers();
-//        }
-//    }
+    @GetMapping("/country/{country}")
+    public ResponseEntity<List<Player>> getPlayersByCountry(@PathVariable String country) {
+        List<Player> players = playerService.findByCountry(country);
+        return new ResponseEntity<>(players, HttpStatus.OK);
+    }
+}
 

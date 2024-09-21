@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface PlayerRepository extends JpaRepository<Player, String> {
 
     List<Player> findByCollege(String college);
+    List<Player> findByCountry(String country);
 }
