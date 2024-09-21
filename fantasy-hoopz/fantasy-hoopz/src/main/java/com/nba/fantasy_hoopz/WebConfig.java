@@ -14,9 +14,10 @@ public class WebConfig implements WebMvcConfigurer {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")  // Applies to all endpoints
-                        .allowedOrigins("https://nathanddaniel.github.io/NBA-Fantasy-Full-Stack-Project/", "http://localhost:3000")  // Replace with your frontend's URL
+                        .allowedOrigins("https://nathanddaniel.github.io", "http://localhost:3000")  // Replace with your frontend's URL
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")  // Allowed HTTP methods
                         .allowedHeaders("*")  // Allow all headers
+                        .exposedHeaders("Access-Control-Allow-Origin")
                         .allowCredentials(true);  // Allow credentials if needed
             }
         };
