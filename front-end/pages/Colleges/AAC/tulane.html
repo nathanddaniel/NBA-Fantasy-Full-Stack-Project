@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tulane Green Wave - Fantasy Hoopz</title>
+    <link rel="stylesheet" href="../../../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo-parallelogram">
+            <img src="../../../../art_assets/Tab Icons/nba_script.png" alt="NBA Logo" class="nba-logo">
+            <h1 class="site-title">FantasyHoopz</h1>
+        </div>
+        <nav class="nav-icons">
+            <a href="../../../../index.html"><img src="../../../../art_assets/Tab Icons/Home.png" alt="Home" class="nav-icon"></a>
+            <a href="../../Teams/teams.html"><img src="../../../../art_assets/Tab Icons/Teams.png" alt="Teams" class="nav-icon"></a>
+            <a href="../../Colleges/colleges.html"><img src="../../../../art_assets/Tab Icons/College.png" alt="Colleges" class="nav-icon"></a>
+            <a href="../../Countries/countries.html"><img src="../../../../art_assets/Tab Icons/Countries.png" alt="Countries" class="nav-icon"></a>
+            <a href="../../Position/position.html"><img src="../../../../art_assets/Tab Icons/Position.png" alt="Positions" class="nav-icon"></a>
+            <a href="../../search.html"><img src="../../../../art_assets/Tab Icons/Search.png" alt="Search" class="nav-icon"></a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Tulane Green Wave - NBA Players</h2>
+        <table id="player-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Player</th>
+                    <th>Age</th>
+                    <th>G</th>
+                    <th>GS</th>
+                    <th>MPG</th>
+                    <th>FGM</th>
+                    <th>FGA</th>
+                    <th>FG%</th>
+                    <th>3PM</th>
+                    <th>3PA</th>
+                    <th>3P%</th>
+                    <th>2PM</th>
+                    <th>2PA</th>
+                    <th>2P%</th>
+                    <th>EFG%</th>
+                    <th>FTM</th>
+                    <th>FTA</th>
+                    <th>FT%</th>
+                    <th>OFR</th>
+                    <th>DFR</th>
+                    <th>TRB</th>
+                    <th>AST</th>
+                    <th>STL</th>
+                    <th>BLK</th>
+                    <th>T/O</th>
+                    <th>PFO</th>
+                    <th>PPG</th>
+                    <th>Team</th>
+                    <th>POS</th>
+                    <th>Nation</th>
+                    <th>College</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be dynamically populated here -->
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>© 2024 FantasyHoopz</p>
+    </footer>
+
+    <script>
+        fetch('http://localhost:8080/api/version1/player/college/Tulane') 
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.querySelector('#player-table tbody');
+                data.forEach((player, index) => {
+                    const row = document.createElement('tr');
+
+                    row.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${player.player}</td>
+                        <td>${player.age ?? '-'}</td>
+                        <td>${player.games ?? '-'}</td>
+                        <td>${player.gamesStarted ?? '-'}</td>
+                        <td>${player.minutePerGame ?? '-'}</td>
+                        <td>${player.fieldGoal ?? '-'}</td>
+                        <td>${player.fieldGoalAttempted ?? '-'}</td>
+                        <td>${player.fieldGoalPercentage ? (player.fieldGoalPercentage * 100).toFixed(1) + '%' : '-'}</td>
+                        <td>${player.threePoint ?? '-'}</td>
+                        <td>${player.threePointAttempted ?? '-'}</td>
+                        <td>${player.threePointPercentage ? (player.threePointPercentage * 100).toFixed(1) + '%' : '-'}</td>
+                        <td>${player.twoPoint ?? '-'}</td>
+                        <td>${player.twoPointAttempted ?? '-'}</td>
+                        <td>${player.twoPointPercentage ? (player.twoPointPercentage * 100).toFixed(1) + '%' : '-'}</td>
+                        <td>${player.efficientFieldGoalPercentage ? (player.efficientFieldGoalPercentage * 100).toFixed(1) + '%' : '-'}</td>
+                        <td>${player.freeThrows ?? '-'}</td>
+                        <td>${player.freeThrowsAttempted ?? '-'}</td>
+                        <td>${player.freeThrowsPercentage ? (player.freeThrowsPercentage * 100).toFixed(1) + '%' : '-'}</td>
+                        <td>${player.offensiveRebounds ?? '-'}</td>
+                        <td>${player.defensiveRebounds ?? '-'}</td>
+                        <td>${player.totalRebounds ?? '-'}</td>
+                        <td>${player.assists ?? '-'}</td>
+                        <td>${player.steals ?? '-'}</td>
+                        <td>${player.blocks ?? '-'}</td>
+                        <td>${player.turnovers ?? '-'}</td>
+                        <td>${player.personalFouls ?? '-'}</td>
+                        <td>${player.pointsPerGame ?? '-'}</td>
+                        <td>${player.team ?? '-'}</td>
+                        <td>${player.position ?? '-'}</td>
+                        <td>${player.nation ?? '-'}</td>
+                        <td>${player.college ?? '-'}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching player data:', error);
+            });
+    </script>
+</body>
+</html>
