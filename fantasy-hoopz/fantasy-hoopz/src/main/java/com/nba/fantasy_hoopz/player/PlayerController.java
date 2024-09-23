@@ -23,9 +23,9 @@ public class PlayerController {
         return playerService.getPlayersByCollege(college);
     }
 
-    @GetMapping("/country/{country}")
-    public ResponseEntity<List<Player>> getPlayersByCountry(@PathVariable String country) {
-        List<Player> players = playerService.findByCountry(country);
+    @GetMapping("/nation/{nation}")
+    public ResponseEntity<List<Player>> getPlayersByNation(@PathVariable String nation) {
+        List<Player> players = playerService.findByNation(nation);
         return new ResponseEntity<>(players, HttpStatus.OK);
     }
 }

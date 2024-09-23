@@ -19,7 +19,7 @@ public class PlayerService {
         return playerRepository.findByCollege(college);
     }
 
-    public List<Player> findByCountry(String country) {
-        return playerRepository.findByCountry(country);
+    public List<Player> findByNation(String nation) {
+        return playerRepository.findByNation(nation);
     }
 }
