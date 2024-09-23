@@ -33,5 +33,10 @@ public class PlayerController {
     public List<Player> getPlayersByTeam(@PathVariable String team) {
         return playerService.findByTeam(team);
     }
+
+    @GetMapping("/position/{position}")
+    public List<Player> getPlayersByPosition(@PathVariable String position) {
+        return playerService.findByPosition(position);
+    }
 }
 
