@@ -28,5 +28,10 @@ public class PlayerController {
         List<Player> players = playerService.findByNation(nation);
         return new ResponseEntity<>(players, HttpStatus.OK);
     }
+
+    @GetMapping("/team/{team}")
+    public List<Player> getPlayersByTeam(@PathVariable String team) {
+        return playerService.findByTeam(team);
+    }
 }
 

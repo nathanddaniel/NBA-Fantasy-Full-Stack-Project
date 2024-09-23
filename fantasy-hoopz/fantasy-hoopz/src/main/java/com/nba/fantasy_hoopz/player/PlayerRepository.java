@@ -11,4 +11,5 @@ public interface PlayerRepository extends JpaRepository<Player, String> {
 
     List<Player> findByCollege(String college);
     List<Player> findByNation(String nation);
+    List<Player> findByTeam(String team);
 }
