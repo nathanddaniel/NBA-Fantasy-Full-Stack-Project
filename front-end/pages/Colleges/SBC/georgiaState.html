@@ -73,13 +73,21 @@
     </footer>
 
     <script>
-        fetch('http://localhost:8080/api/version1/player/college/GeorgiaState') 
-            .then(response => response.json())
+        const collegeName = 'Georgia State'; 
+        fetch(`http://localhost:8080/api/version1/player/college/${encodeURIComponent(collegeName)}`) 
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
                 const tableBody = document.querySelector('#player-table tbody');
+                tableBody.innerHTML = ''; // Clear existing rows
+                
                 data.forEach((player, index) => {
                     const row = document.createElement('tr');
-
+    
                     row.innerHTML = `
                         <td>${index + 1}</td>
                         <td>${player.player}</td>
