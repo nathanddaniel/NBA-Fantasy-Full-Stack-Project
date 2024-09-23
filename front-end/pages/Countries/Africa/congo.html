@@ -72,53 +72,65 @@
     </footer>
 
     <script>
-        fetch('http://localhost:8080/api/version1/player/college/Congo') 
-            .then(response => response.json())
-            .then(data => {
-                const tableBody = document.querySelector('#player-table tbody');
-                data.forEach((player, index) => {
-                    const row = document.createElement('tr');
-
-                    row.innerHTML = `
-                        <td>${index + 1}</td>
-                        <td>${player.player}</td>
-                        <td>${player.age ?? '-'}</td>
-                        <td>${player.games ?? '-'}</td>
-                        <td>${player.gamesStarted ?? '-'}</td>
-                        <td>${player.minutePerGame ?? '-'}</td>
-                        <td>${player.fieldGoal ?? '-'}</td>
-                        <td>${player.fieldGoalAttempted ?? '-'}</td>
-                        <td>${player.fieldGoalPercentage ? (player.fieldGoalPercentage * 100).toFixed(1) + '%' : '-'}</td>
-                        <td>${player.threePoint ?? '-'}</td>
-                        <td>${player.threePointAttempted ?? '-'}</td>
-                        <td>${player.threePointPercentage ? (player.threePointPercentage * 100).toFixed(1) + '%' : '-'}</td>
-                        <td>${player.twoPoint ?? '-'}</td>
-                        <td>${player.twoPointAttempted ?? '-'}</td>
-                        <td>${player.twoPointPercentage ? (player.twoPointPercentage * 100).toFixed(1) + '%' : '-'}</td>
-                        <td>${player.efficientFieldGoalPercentage ? (player.efficientFieldGoalPercentage * 100).toFixed(1) + '%' : '-'}</td>
-                        <td>${player.freeThrows ?? '-'}</td>
-                        <td>${player.freeThrowsAttempted ?? '-'}</td>
-                        <td>${player.freeThrowsPercentage ? (player.freeThrowsPercentage * 100).toFixed(1) + '%' : '-'}</td>
-                        <td>${player.offensiveRebounds ?? '-'}</td>
-                        <td>${player.defensiveRebounds ?? '-'}</td>
-                        <td>${player.totalRebounds ?? '-'}</td>
-                        <td>${player.assists ?? '-'}</td>
-                        <td>${player.steals ?? '-'}</td>
-                        <td>${player.blocks ?? '-'}</td>
-                        <td>${player.turnovers ?? '-'}</td>
-                        <td>${player.personalFouls ?? '-'}</td>
-                        <td>${player.pointsPerGame ?? '-'}</td>
-                        <td>${player.team ?? '-'}</td>
-                        <td>${player.position ?? '-'}</td>
-                        <td>${player.nation ?? '-'}</td>
-                        <td>${player.college ?? '-'}</td>
-                    `;
-                    tableBody.appendChild(row);
+        function fetchPlayersByCountry(nation) {
+            // Fetch player data for the specified country
+            fetch(`http://localhost:8080/api/version1/player/nation/${nation}`) 
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const tableBody = document.querySelector('#player-table tbody');
+                    tableBody.innerHTML = ''; // Clear existing rows
+                    
+                    data.forEach((player, index) => {
+                        const row = document.createElement('tr');
+                        
+                        row.innerHTML = `
+                            <td>${index + 1}</td>
+                            <td>${player.player}</td>
+                            <td>${player.age ?? '-'}</td>
+                            <td>${player.games ?? '-'}</td>
+                            <td>${player.gamesStarted ?? '-'}</td>
+                            <td>${player.minutePerGame ?? '-'}</td>
+                            <td>${player.fieldGoal ?? '-'}</td>
+                            <td>${player.fieldGoalAttempted ?? '-'}</td>
+                            <td>${player.fieldGoalPercentage ? (player.fieldGoalPercentage * 100).toFixed(1) + '%' : '-'}</td>
+                            <td>${player.threePoint ?? '-'}</td>
+                            <td>${player.threePointAttempted ?? '-'}</td>
+                            <td>${player.threePointPercentage ? (player.threePointPercentage * 100).toFixed(1) + '%' : '-'}</td>
+                            <td>${player.twoPoint ?? '-'}</td>
+                            <td>${player.twoPointAttempted ?? '-'}</td>
+                            <td>${player.twoPointPercentage ? (player.twoPointPercentage * 100).toFixed(1) + '%' : '-'}</td>
+                            <td>${player.efficientFieldGoalPercentage ? (player.efficientFieldGoalPercentage * 100).toFixed(1) + '%' : '-'}</td>
+                            <td>${player.freeThrows ?? '-'}</td>
+                            <td>${player.freeThrowsAttempted ?? '-'}</td>
+                            <td>${player.freeThrowsPercentage ? (player.freeThrowsPercentage * 100).toFixed(1) + '%' : '-'}</td>
+                            <td>${player.offensiveRebounds ?? '-'}</td>
+                            <td>${player.defensiveRebounds ?? '-'}</td>
+                            <td>${player.totalRebounds ?? '-'}</td>
+                            <td>${player.assists ?? '-'}</td>
+                            <td>${player.steals ?? '-'}</td>
+                            <td>${player.blocks ?? '-'}</td>
+                            <td>${player.turnovers ?? '-'}</td>
+                            <td>${player.personalFouls ?? '-'}</td>
+                            <td>${player.pointsPerGame ?? '-'}</td>
+                            <td>${player.team ?? '-'}</td>
+                            <td>${player.position ?? '-'}</td>
+                            <td>${player.nation ?? '-'}</td>
+                            <td>${player.college ?? '-'}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching player data:', error);
                 });
-            })
-            .catch(error => {
-                console.error('Error fetching player data:', error);
-            });
+        }
+        fetchPlayersByCountry('Congo');
     </script>
+
 </body>
 </html>
