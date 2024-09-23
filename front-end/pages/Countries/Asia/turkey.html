@@ -74,11 +74,11 @@
     <script>
         function fetchPlayersByCountry(Turkey) {
             // Fetch player data for the specified country
-            fetch(`http://localhost:8080/api/version1/player/country/Turkey}`) 
+            fetch(`http://localhost:8080/api/version1/player/country/Turkey`) 
                 .then(response => response.json())
                 .then(data => {
                     const tableBody = document.querySelector('#player-table tbody');
-                    tableBody.innerHTML = ''; // Clear existing rows
+                    tableBody.innerHTML = ''; 
                     
                     data.forEach((player, index) => {
                         const row = document.createElement('tr');
@@ -124,9 +124,7 @@
                     console.error('Error fetching player data:', error);
                 });
         }
-    
-        // Example usage: Fetch players for a specific country, e.g., "USA"
-        fetchPlayersByCountry('USA');
+        fetchPlayersByCountry('Turkey');
     </script>
 
 </body>
