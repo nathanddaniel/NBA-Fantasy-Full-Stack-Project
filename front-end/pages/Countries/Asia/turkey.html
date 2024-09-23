@@ -72,13 +72,18 @@
     </footer>
 
     <script>
-        function fetchPlayersByCountry(Turkey) {
+        function fetchPlayersByCountry(nation) {
             // Fetch player data for the specified country
-            fetch(`http://localhost:8080/api/version1/player/country/Turkey`) 
-                .then(response => response.json())
+            fetch(`http://localhost:8080/api/version1/player/nation/${nation}`) 
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     const tableBody = document.querySelector('#player-table tbody');
-                    tableBody.innerHTML = ''; 
+                    tableBody.innerHTML = ''; // Clear existing rows
                     
                     data.forEach((player, index) => {
                         const row = document.createElement('tr');
@@ -124,6 +129,8 @@
                     console.error('Error fetching player data:', error);
                 });
         }
+    
+        // Fetch players for Turkey
         fetchPlayersByCountry('Turkey');
     </script>
 
